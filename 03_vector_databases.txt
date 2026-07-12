@@ -1,0 +1,11 @@
+A vector database is a specialized storage system designed to store embeddings and perform fast similarity search across millions of vectors. Unlike a traditional relational database, a vector database is optimized for nearest neighbor search rather than exact matching.
+
+ChromaDB is a lightweight, open source vector database that is popular for local development and small projects. It can run entirely in memory or persist data to disk, and it stores both the vector and the original text alongside optional metadata.
+
+FAISS, developed by Facebook AI Research, is a library rather than a full database. It is extremely fast for similarity search but does not handle persistence or metadata filtering out of the box the way ChromaDB does.
+
+For production systems at larger scale, developers often use managed vector databases such as Pinecone, Weaviate, or Qdrant. These support sharding, replication, and metadata filtering across billions of vectors, but they introduce infrastructure complexity that is unnecessary for a learning project.
+
+Most vector databases use approximate nearest neighbor algorithms, such as HNSW (Hierarchical Navigable Small World graphs), to make search fast even with millions of entries. This trades a small amount of accuracy for a large speed improvement compared to brute-force search.
+
+When adding data to a vector database, it is common practice to also store metadata such as the source filename, page number, or chunk index. This metadata makes it possible to filter search results and to trace an answer back to its original source document.

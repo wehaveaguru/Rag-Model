@@ -1,0 +1,9 @@
+Embeddings are numerical representations of text that capture semantic meaning. When a sentence is passed through an embedding model, it is converted into a vector of floating point numbers, typically ranging from 384 to 1536 dimensions depending on the model used.
+
+The core idea behind embeddings is that sentences with similar meaning end up close together in this vector space, while unrelated sentences end up far apart. This is measured using cosine similarity, which calculates the angle between two vectors rather than their raw distance.
+
+A popular open source embedding model is all-MiniLM-L6-v2, which produces 384 dimensional vectors and runs efficiently on CPU. It is trained on a large corpus of sentence pairs and is a common default choice for lightweight retrieval systems.
+
+Embeddings are the foundation of retrieval augmented generation because they allow a system to search for relevant text based on meaning rather than exact keyword matches. This means a query like "how do plants make energy" can retrieve a chunk about photosynthesis even if the word "energy" never appears in that chunk.
+
+One limitation of embeddings is that they can struggle with exact matches such as product codes, names, or numeric identifiers. This is why many production retrieval systems combine embeddings with traditional keyword search, an approach known as hybrid search.

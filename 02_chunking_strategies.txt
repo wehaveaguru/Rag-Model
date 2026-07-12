@@ -1,0 +1,11 @@
+Chunking is the process of splitting a large document into smaller pieces before embedding them. This step matters because embedding models have a limited context window, and retrieval quality depends heavily on how the text is divided.
+
+The simplest chunking method is fixed-size chunking, where the text is split every N characters regardless of sentence or paragraph boundaries. This is easy to implement but can cut sentences in half, which sometimes hurts retrieval quality.
+
+A better approach is recursive character splitting, which tries to split on paragraph breaks first, then sentences, then words, only falling back to a hard character cutoff if necessary. This tends to produce cleaner, more coherent chunks.
+
+Overlap between chunks is another important parameter. If chunk size is 500 characters with 50 characters of overlap, each chunk repeats the last 50 characters of the previous chunk. This prevents important context from being lost right at a chunk boundary.
+
+Semantic chunking is a more advanced technique where chunks are split based on topic shifts rather than a fixed size. This is typically done by comparing the embedding similarity of consecutive sentences and creating a new chunk when the similarity drops significantly.
+
+Choosing the right chunk size is a tradeoff. Smaller chunks give more precise retrieval but may lack surrounding context. Larger chunks give more context but can dilute the specific information the query is looking for, since the whole chunk gets embedded as a single vector.
