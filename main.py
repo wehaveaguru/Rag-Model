@@ -26,7 +26,7 @@ chunks3=''
 start=0
 while start<len(text3):
     end=start+window
-    chunks3+=text3[start]
+    chunks3+=text3[start:end]
     start+=window-overlap
 
  # 1. Load a pretrained Sentence Transformer model
